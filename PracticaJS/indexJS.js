@@ -252,3 +252,50 @@ function displayWeather(data) {
   weatherLoading.classList.add("hidden");
   weatherData.classList.remove("hidden");
 }
+ 
+// ---- Classificació de la pluja ----
+function getRainInfo(probability) {
+  if (probability < 20) {
+    return { text: "✓ Sense pluja prevista", cssClass: "no-rain" };
+  } else if (probability < 50) {
+    return { text: "⚠ Possible pluja", cssClass: "possible" };
+  } else {
+    return { text: "☔ Probable pluja", cssClass: "probable" };
+  }
+}
+ 
+// ---- Icones i descripcions WMO ----
+function getWeatherInfo(code) {
+  const weatherCodes = {
+    0:  { icon: "☀️",  description: "Cel clar" },
+    1:  { icon: "🌤️", description: "Principalment clar" },
+    2:  { icon: "⛅",  description: "Parcialment ennuvolat" },
+    3:  { icon: "☁️",  description: "Ennuvolat" },
+    45: { icon: "🌫️", description: "Boira" },
+    48: { icon: "🌫️", description: "Boira amb gebrada" },
+    51: { icon: "🌦️", description: "Plugim lleu" },
+    53: { icon: "🌦️", description: "Plugim moderat" },
+    55: { icon: "🌧️", description: "Plugim intens" },
+    61: { icon: "🌧️", description: "Pluja lleu" },
+    63: { icon: "🌧️", description: "Pluja moderada" },
+    65: { icon: "🌧️", description: "Pluja intensa" },
+    71: { icon: "🌨️", description: "Neu lleu" },
+    73: { icon: "❄️",  description: "Neu moderada" },
+    75: { icon: "❄️",  description: "Neu intensa" },
+    77: { icon: "🌨️", description: "Granissol" },
+    80: { icon: "🌦️", description: "Ruixats lleus" },
+    81: { icon: "🌧️", description: "Ruixats moderats" },
+    82: { icon: "⛈️",  description: "Ruixats violents" },
+    85: { icon: "🌨️", description: "Ruixats de neu" },
+    95: { icon: "⛈️",  description: "Tempesta" },
+    96: { icon: "⛈️",  description: "Tempesta amb calamarsa" },
+    99: { icon: "⛈️",  description: "Tempesta intensa amb calamarsa" }
+  };
+ 
+  return weatherCodes[code] || { icon: "🌡️", description: `Codi ${code}` };
+}
+
+
+
+
+initSelector();
