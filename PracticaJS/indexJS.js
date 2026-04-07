@@ -110,3 +110,48 @@ const convertedAmount     = document.getElementById("convertedAmount");
 const targetCurrencyCode  = document.getElementById("targetCurrencyCode");
 const conversionSummary   = document.getElementById("conversionSummary");
  
+
+// 4. INICIALITZAR EL SELECTOR DE CIUTATS
+
+function initSelector() {
+  Object.entries(cities).forEach(([key, city]) => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = `${city.flag}  ${city.name} — ${city.country}`;
+    citySelect.appendChild(option);
+  });
+}
+ 
+// 5. EVENT: canvi de ciutat
+
+citySelect.addEventListener("change", function () {
+  const key = this.value;
+ 
+  if (!key) {
+    // Cap ciutat seleccionada → mostrar placeholder
+    dashboardContent.classList.add("hidden");
+    placeholder.classList.remove("hidden");
+    currentCity = null;
+    return;
+  }
+ 
+  currentCity = cities[key];
+ 
+  // Mostrar dashboard i amagar placeholder
+  placeholder.classList.add("hidden");
+  dashboardContent.classList.remove("hidden");
+ 
+  // Reset del camp de quantitat
+  eurAmount.value = "";
+  convertedAmount.textContent = "0.00";
+  conversionSummary.textContent = "Introdueix una quantitat per convertir";
+ 
+  // Actualitzar hero card (excepte temperatura, que ve de la API)
+  updateHeroCard();
+ 
+  // Carregar dades de les APIs
+  fetchWeather(currentCity);
+  fetchExchangeRate(currentCity.currency);
+});
+ 
+
