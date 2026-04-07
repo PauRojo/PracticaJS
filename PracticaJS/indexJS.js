@@ -164,4 +164,33 @@ function updateHeroCard() {
   heroTemp.textContent    = "—";  // S'actualitza quan arriben les dades meteo
   heroCoords.textContent  = `${city.lat.toFixed(2)}°N, ${city.lng.toFixed(2)}°E`;
 }
+
+
+// 7. API METEOROLOGIA — Open-Meteo (gratuïta, sense API key)
+
+async function fetchWeather(city) {
+  // Mostrar estat de càrrega
+  weatherLoading.classList.remove("hidden");
+  weatherData.classList.add("hidden");
+  weatherError.classList.add("hidden");
+ 
+  const url = `https://api.open-meteo.com/v1/forecast?` +
+    `latitude=${city.lat}&longitude=${city.lng}` +
+    `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m` +
+    `&hourly=precipitation_probability` +
+    `&timezone=auto&forecast_days=1`;
+ 
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+ 
+    const data = await response.json();
+    displayWeather(data);
+ 
+  } catch (error) {
+    console.error("Error meteorologia:", error);
+    weatherLoading.classList.add("hidden");
+    weatherError.classList.remove("hidden");
+  }
+}
  
