@@ -321,3 +321,45 @@ body {
   font-weight: 500;
   color: var(--text);
 }
+
+.rain-block {
+  background: var(--bg-card2);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+.rain-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+}
+.rain-pct {
+  font-weight: 700;
+  color: var(--rain-blue);
+  font-size: 1rem;
+}
+.rain-bar-bg {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
+.rain-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  width: 0%;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  background: linear-gradient(90deg, var(--accent), #a78bfa);
+}
+.rain-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: right;
+}
+.rain-label.no-rain   { color: var(--green); }
+.rain-label.possible  { color: var(--yellow); }
+.rain-label.probable  { color: var(--red); }
+ 
