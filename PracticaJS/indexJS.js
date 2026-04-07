@@ -154,4 +154,14 @@ citySelect.addEventListener("change", function () {
   fetchExchangeRate(currentCity.currency);
 });
  
+// 6. ACTUALITZAR CARD HERO
 
+function updateHeroCard() {
+  const city = currentCity;
+  heroCity.textContent    = city.name;
+  heroCountry.textContent = city.country;
+  heroCurrency.textContent = city.currency;
+  heroTemp.textContent    = "—";  // S'actualitza quan arriben les dades meteo
+  heroCoords.textContent  = `${city.lat.toFixed(2)}°N, ${city.lng.toFixed(2)}°E`;
+}
+ 
