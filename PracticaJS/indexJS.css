@@ -363,3 +363,113 @@ body {
 .rain-label.possible  { color: var(--yellow); }
 .rain-label.probable  { color: var(--red); }
  
+.card-currency { animation: fadeUp 0.6s 0.25s ease both; }
+ 
+.currency-rate-info {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--bg-card2);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.currency-rate-info strong {
+  color: var(--gold-light);
+  font-size: 0.95rem;
+}
+ 
+.currency-input-group label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.amount-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1rem;
+  transition: border-color var(--transition);
+}
+.amount-row:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+.currency-flag { font-size: 1.3rem; }
+.amount-row input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text);
+  min-width: 0;
+}
+.amount-row input::placeholder { color: var(--text-dim); }
+.currency-code {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+ 
+.currency-arrow {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin: 0.8rem 0;
+  animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(4px); }
+}
+ 
+.currency-result-block {
+  background: linear-gradient(135deg, var(--gold-dim), rgba(79,142,247,0.1));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.result-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+.result-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+#targetCurrencyCode {
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+.conversion-summary {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-align: center;
+  font-style: italic;
+}
