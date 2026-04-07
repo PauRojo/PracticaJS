@@ -295,6 +295,44 @@ function getWeatherInfo(code) {
   return weatherCodes[code] || { icon: "🌡️", description: `Codi ${code}` };
 }
 
+// 8. API DIVISES — Frankfurter (gratuïta, sense API key)
+
+async function fetchExchangeRate(targetCurrency) {
+  // Reset estats
+  currencyLoading.classList.remove("hidden");
+  currencyData.classList.add("hidden");
+  currencyError.classList.add("hidden");
+  exchangeRate = null;
+ 
+  // Si la moneda destí és EUR, no cal fer fetch
+  if (targetCurrency === "EUR") {
+    exchangeRate = 1;
+    displayCurrencyData(targetCurrency, 1);
+    return;
+  }
+ 
+  const url = `https://api.frankfurter.dev/v1/latest?base=EUR&symbols=${targetCurrency}`;
+ 
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+ 
+    const data = await response.json();
+    const rate = data.rates[targetCurrency];
+ 
+    if (!rate) throw new Error("Moneda no trobada");
+ 
+    exchangeRate = rate;
+    displayCurrencyData(targetCurrency, rate);
+ 
+  } catch (error) {
+    console.error("Error divises:", error);
+    currencyLoading.classList.add("hidden");
+    currencyError.classList.remove("hidden");
+  }
+}
+ 
+
 
 
 
