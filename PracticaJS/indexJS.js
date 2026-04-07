@@ -353,8 +353,38 @@ function displayCurrencyData(currency, rate) {
   if (eurAmount.value) convertCurrency();
 }
  
+// 9. CONVERSOR DE MONEDA — s'activa a cada canvi de l'input
 
-
-
+eurAmount.addEventListener("input", convertCurrency);
+ 
+function convertCurrency() {
+  const amount = parseFloat(eurAmount.value);
+ 
+  if (!exchangeRate || isNaN(amount) || amount < 0) {
+    convertedAmount.textContent = "0.00";
+    conversionSummary.textContent = "Introdueix una quantitat per convertir";
+    return;
+  }
+ 
+  const result = amount * exchangeRate;
+  const currency = currentCity.currency;
+ 
+  // Formatejar resultat (2 decimals per defecte, 0 per JPY i MXN grans)
+  const decimals = ["JPY", "KRW"].includes(currency) ? 0 : 2;
+  const formattedResult = result.toLocaleString("ca-ES", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  });
+ 
+  convertedAmount.textContent = formattedResult;
+ 
+  // Resum textual de la conversió
+  if (currency === "EUR") {
+    conversionSummary.textContent = `${amount.toFixed(2)} EUR = ${formattedResult} EUR`;
+  } else {
+    conversionSummary.textContent =
+      `${amount.toFixed(2)} EUR × ${exchangeRate.toFixed(4)} = ${formattedResult} ${currency}`;
+  }
+}
 
 initSelector();
