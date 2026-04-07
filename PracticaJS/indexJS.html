@@ -109,3 +109,46 @@
             <p>⚠️ No s'han pogut carregar les dades meteorològiques.</p>
           </div>
         </div>
+
+        <div class="card card-currency">
+          <h3 class="card-title">💱 Conversió de moneda</h3>
+          <div id="currencyLoading" class="loading-state">
+            <div class="spinner"></div>
+            <p>Carregant tipus de canvi...</p>
+          </div>
+          <div id="currencyData" class="hidden">
+            <div class="currency-rate-info">
+              <span>Tipus de canvi actual:</span>
+              <strong id="rateDisplay">—</strong>
+            </div>
+            <div class="currency-input-group">
+              <label for="eurAmount">Quantitat en EUR</label>
+              <div class="amount-row">
+                <span class="currency-flag" id="eurFlag">🇪🇺</span>
+                <input type="number" id="eurAmount" placeholder="0.00" min="0" step="0.01" />
+                <span class="currency-code">EUR</span>
+              </div>
+            </div>
+            <div class="currency-arrow">↓</div>
+            <div class="currency-result-block">
+              <div class="result-row">
+                <span class="result-label">Resultat</span>
+                <div class="result-amount">
+                  <span id="resultFlag">🏳</span>
+                  <span id="convertedAmount">0.00</span>
+                  <span id="targetCurrencyCode">—</span>
+                </div>
+              </div>
+            </div>
+            <div class="conversion-summary" id="conversionSummary">
+              Introdueix una quantitat per convertir
+            </div>
+          </div>
+          <div id="currencyError" class="error-state hidden">
+            <p>⚠️ No s'ha pogut carregar el tipus de canvi.</p>
+          </div>
+        </div>
+ 
+      </div><!-- /widgets-grid -->
+ 
+    </main>
