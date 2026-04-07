@@ -164,3 +164,25 @@ body {
   pointer-events: none;
   font-size: 1.1rem;
 }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.card-title {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
