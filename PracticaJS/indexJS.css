@@ -186,3 +186,86 @@ body {
   padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--border);
 }
+
+
+.card-hero {
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #1a1e2a 0%, #1f2436 100%);
+  border-color: rgba(201,168,76,0.25);
+  animation: fadeUp 0.6s 0.05s ease both;
+  position: relative;
+  overflow: hidden;
+}
+.card-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.city-name {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+}
+.country-name {
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+.hero-temp-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+.hero-temp {
+  font-family: var(--font-head);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.hero-unit {
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-top: 0.3rem;
+}
+.hero-bottom {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.hero-meta strong { color: var(--text); }
+.meta-icon { font-size: 1.1rem; }
+ 
+/* ---- GRID WIDGETS ---- */
+.widgets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .widgets-grid { grid-template-columns: 1fr; }
+  .hero-top { flex-direction: column; gap: 1rem; }
+  .city-name { font-size: 1.8rem; }
+  .hero-temp { font-size: 2.8rem; }
+}
