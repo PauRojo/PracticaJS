@@ -117,3 +117,50 @@ body {
   font-weight: 300;
   letter-spacing: 0.04em;
 }
+
+.selector-section {
+  margin-bottom: 2.5rem;
+  animation: fadeDown 0.7s 0.1s ease both;
+}
+.selector-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.select-wrapper select {
+  width: 100%;
+  appearance: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.9rem 3rem 0.9rem 1.2rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.select-wrapper select:focus,
+.select-wrapper select:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+.select-arrow {
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  pointer-events: none;
+  font-size: 1.1rem;
+}
