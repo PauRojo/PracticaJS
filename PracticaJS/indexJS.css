@@ -473,3 +473,38 @@ body {
   text-align: center;
   font-style: italic;
 }
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+ 
+.error-state {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--red);
+  font-size: 0.88rem;
+}
+ 
+
+.placeholder {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text-dim);
+  animation: fadeDown 0.5s ease both;
+}
+.placeholder-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.4; }
+.placeholder p { font-size: 1rem; font-weight: 300; }
