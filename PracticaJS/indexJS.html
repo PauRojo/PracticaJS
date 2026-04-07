@@ -61,3 +61,51 @@
           </div>
         </div>
       </div>
+
+      <div class="widgets-grid">
+ 
+      
+        <div class="card card-weather">
+          <h3 class="card-title">🌤 Meteorologia</h3>
+          <div id="weatherLoading" class="loading-state">
+            <div class="spinner"></div>
+            <p>Carregant dades...</p>
+          </div>
+          <div id="weatherData" class="hidden">
+            <div class="weather-main">
+              <div class="weather-icon-big" id="weatherIcon">—</div>
+              <div>
+                <div class="weather-temp-big" id="weatherTemp">—°C</div>
+                <div class="weather-desc" id="weatherDesc">—</div>
+              </div>
+            </div>
+            <div class="weather-details">
+              <div class="weather-detail-item">
+                <span class="detail-label">Humitat</span>
+                <span class="detail-value" id="weatherHumidity">—</span>
+              </div>
+              <div class="weather-detail-item">
+                <span class="detail-label">Vent</span>
+                <span class="detail-value" id="weatherWind">—</span>
+              </div>
+              <div class="weather-detail-item">
+                <span class="detail-label">Sensació</span>
+                <span class="detail-value" id="weatherFeels">—</span>
+              </div>
+            </div>
+            <!-- PLUJA -->
+            <div class="rain-block">
+              <div class="rain-header">
+                <span>☔ Probabilitat de pluja</span>
+                <span class="rain-pct" id="rainPct">—%</span>
+              </div>
+              <div class="rain-bar-bg">
+                <div class="rain-bar-fill" id="rainBarFill"></div>
+              </div>
+              <div class="rain-label" id="rainLabel">—</div>
+            </div>
+          </div>
+          <div id="weatherError" class="error-state hidden">
+            <p>⚠️ No s'han pogut carregar les dades meteorològiques.</p>
+          </div>
+        </div>
