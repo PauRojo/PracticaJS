@@ -332,6 +332,27 @@ async function fetchExchangeRate(targetCurrency) {
   }
 }
  
+// ---- Mostrar widget de divises ----
+function displayCurrencyData(currency, rate) {
+  // Taxa de canvi
+  if (currency === "EUR") {
+    rateDisplay.textContent = "1 EUR = 1 EUR";
+  } else {
+    rateDisplay.textContent = `1 EUR = ${rate.toFixed(4)} ${currency}`;
+  }
+ 
+  // Bandera i codi de moneda al resultat
+  resultFlag.textContent          = currentCity.flag;
+  targetCurrencyCode.textContent  = currency;
+ 
+  // Mostrar widget
+  currencyLoading.classList.add("hidden");
+  currencyData.classList.remove("hidden");
+ 
+  // Si hi havia una quantitat introduïda, recalcular
+  if (eurAmount.value) convertCurrency();
+}
+ 
 
 
 
