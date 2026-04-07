@@ -194,3 +194,61 @@ async function fetchWeather(city) {
   }
 }
  
+// ---- Processar i mostrar dades meteorològiques ----
+function displayWeather(data) {
+  const current = data.current;
+ 
+  // Temperatura actual
+  const temp = Math.round(current.temperature_2m);
+ 
+  // Probabilitat de pluja: agafem el valor màxim de les properes hores
+  const precipProb = data.hourly.precipitation_probability;
+  // Agafem la màxima de les properes 12 hores
+  const maxRainProb = Math.max(...precipProb.slice(0, 12));
+ 
+  // Temperatura sensació
+  const feelsLike = Math.round(current.apparent_temperature);
+ 
+  // Humitat
+  const humidity = current.relative_humidity_2m;
+ 
+  // Vent
+  const wind = Math.round(current.wind_speed_10m);
+ 
+  // Icona i descripció del temps (WMO weather codes)
+  const { icon, description } = getWeatherInfo(current.weather_code);
+ 
+ // ---- Actualitzar DOM ----
+  weatherIcon.textContent     = icon;
+  weatherTemp.textContent     = `${temp}°C`;
+  weatherDesc.textContent     = description;
+  weatherHumidity.textContent = `${humidity}%`;
+  weatherWind.textContent     = `${wind} km/h`;
+  weatherFeels.textContent    = `${feelsLike}°C`;
+ 
+  // Actualitzar hero card temperatura
+  heroTemp.textContent = temp;
+ 
+  // ---- Probabilitat de pluja ----
+  rainPct.textContent = `${maxRainProb}%`;
+  rainBarFill.style.width = `${maxRainProb}%`;
+ 
+  // Establir color de la barra i text descriptiu
+  const rainInfo = getRainInfo(maxRainProb);
+  rainLabel.textContent  = rainInfo.text;
+  rainLabel.className    = `rain-label ${rainInfo.cssClass}`;
+ 
+  // Color de la barra de pluja
+  if (maxRainProb < 20) {
+    rainBarFill.style.background = "linear-gradient(90deg, #3ecf8e, #6eedb7)";
+  } else if (maxRainProb < 50) {
+    rainBarFill.style.background = "linear-gradient(90deg, #f7c94f, #fbbf24)";
+  } else {
+    rainBarFill.style.background = "linear-gradient(90deg, #4f8ef7, #a78bfa)";
+  }
+
+
+  // Mostrar dades
+  weatherLoading.classList.add("hidden");
+  weatherData.classList.remove("hidden");
+}
