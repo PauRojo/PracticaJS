@@ -1,0 +1,1 @@
+Esta práctica consta de una página web la cual funciona como un Travel Dashboard, utilizando el lenguaje de programación de JavaScript. En dicha página puedes consultar características a considerar de otras ciudades antes de la planificación de un viaje, así como una función de cambio de divisas. Este proyecto pertenece a la asignatura de Web y digitalización.
